@@ -6,5 +6,6 @@ namespace Code.Infrastructure.Services.Settings
         IService
     {
         MainConfig MainConfig { get; }
+        ControlsConfig ControlsConfig { get; }
     }
 }

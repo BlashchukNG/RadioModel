@@ -2,7 +2,10 @@
 {
     public static class AssetsPath
     {
-        public const string VIEW_MAIN_PATH = "UI/view main";
-        public const string VIEW_USER_DATA_PATH = "UI/view user data";
+        //CONTROLS
+        public const string CONTROL_BULLDOZER = "Controls/control bulldozer";
+        
+        public const string VIEW_MAIN = "UI/view main";
+        public const string VIEW_USER_DATA = "UI/view user data";
     }
 }

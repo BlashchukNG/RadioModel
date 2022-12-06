@@ -6,10 +6,13 @@ namespace Code.Infrastructure.Services.Settings
     public sealed class SettingsService :
         ISettingsService
     {
-        private const string CONFIGS = "Configs/config main";
-
-        public SettingsService() => MainConfig = Resources.Load<MainConfig>(CONFIGS);
+        public SettingsService()
+        {
+            MainConfig = Resources.Load<MainConfig>(ConfigsPath.MAIN);
+            ControlsConfig = Resources.Load<ControlsConfig>(ConfigsPath.MAIN);
+        }
 
         public MainConfig MainConfig { get; }
+        public ControlsConfig ControlsConfig { get; }
     }
 }
