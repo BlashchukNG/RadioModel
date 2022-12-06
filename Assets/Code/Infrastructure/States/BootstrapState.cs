@@ -1,7 +1,6 @@
 ﻿using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Services;
-using Code.Infrastructure.Services.JsonLoad;
 using Code.Infrastructure.Services.Settings;
 
 namespace Code.Infrastructure.States
@@ -37,14 +36,13 @@ namespace Code.Infrastructure.States
 
         private void EnterLoadScene()
         {
-            _gameStateMachine.Enter<LoadJsonState>();
+            _gameStateMachine.Enter<LoadLevelState, string>("Game");
         }
 
         private void RegisterServices()
         {
             _services.RegisterSingle<ISettingsService>(new SettingsService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<IJsonLoadService>(new JsonLoadService(_coroutineRunner));
             _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
         }
     }

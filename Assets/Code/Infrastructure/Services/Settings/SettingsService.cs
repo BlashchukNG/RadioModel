@@ -8,13 +8,8 @@ namespace Code.Infrastructure.Services.Settings
     {
         private const string CONFIGS = "Configs/config main";
 
-        private MainConfig _mainConfig;
+        public SettingsService() => MainConfig = Resources.Load<MainConfig>(CONFIGS);
 
-        public SettingsService()
-        {
-            _mainConfig = Resources.Load<MainConfig>(CONFIGS);
-        }
-
-        public MainConfig MainConfig => _mainConfig;
+        public MainConfig MainConfig { get; }
     }
 }

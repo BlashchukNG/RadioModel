@@ -1,21 +1,17 @@
-﻿using Code.Infrastructure.Datas;
-using Code.Infrastructure.Factory;
+﻿using Code.Infrastructure.Factory;
 using Code.Logic;
-using Code.Views.ViewMain;
 using UnityEngine;
 
 namespace Code.Infrastructure.States
 {
     public sealed class LoadLevelState :
-        IPayloadedState<LoadLevelStateData>
+        IPayloadedState<string>
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
 
         private readonly IGameFactory _gameFactory;
-
-        private LoadLevelStateData _data;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory)
         {
@@ -25,15 +21,12 @@ namespace Code.Infrastructure.States
             _gameFactory = gameFactory;
         }
 
-        public void Enter(LoadLevelStateData data)
+        public void Enter(string sceneName)
         {
-            _data = data;
-
             _loadingCurtain.Show();
             _gameFactory.CleanUp();
 
-            Debug.Log(data.sceneName);
-            _sceneLoader.Load(data.sceneName, onLoaded: OnLoaded);
+            _sceneLoader.Load(sceneName, onLoaded: OnLoaded);
         }
 
         public void Exit()
@@ -52,10 +45,8 @@ namespace Code.Infrastructure.States
 
         private void InitGame()
         {
-            Debug.Log("Start Init");
-
-            var main = _gameFactory.CreateViewMain().GetComponent<MainView>();
-            main.Initialize(_data.userData);
+            // var main = _gameFactory.CreateViewMain().GetComponent<MainView>();
+            // main.Initialize(_data.userData);
         }
     }
 }

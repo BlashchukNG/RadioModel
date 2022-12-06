@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Services;
-using Code.Infrastructure.Services.JsonLoad;
-using Code.Infrastructure.Services.Settings;
 using Code.Logic;
 
 namespace Code.Infrastructure.States
@@ -18,7 +16,6 @@ namespace Code.Infrastructure.States
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner),
-                [typeof(LoadJsonState)] = new LoadJsonState(this,services.Single<ISettingsService>(), services.Single<IJsonLoadService>()),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(this)
             };
