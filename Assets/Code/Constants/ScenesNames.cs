@@ -3,6 +3,6 @@
     public static class SceneNames
     {
         public const string INITIAL = "Initial";
-        public const string GAME = "GAME";
+        public const string GAME = "Game";
     }
 }

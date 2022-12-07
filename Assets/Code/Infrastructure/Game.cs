@@ -1,7 +1,7 @@
-﻿using Code.Infrastructure.Services;
+﻿using Code.Curtain;
+using Code.Infrastructure.Services;
 using Code.Infrastructure.States;
 using Code.Infrastructure.Updater;
-using Code.Logic;
 
 namespace Code.Infrastructure
 {

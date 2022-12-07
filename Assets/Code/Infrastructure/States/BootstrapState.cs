@@ -1,5 +1,6 @@
 ﻿using Code.Constants;
 using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.Builders;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Services;
 using Code.Infrastructure.Services.Control;
@@ -23,13 +24,13 @@ namespace Code.Infrastructure.States
             _sceneLoader = sceneLoader;
             _services = services;
             _coroutineRunner = coroutineRunner;
-
             RegisterServices();
         }
 
         public void Enter()
         {
-            _sceneLoader.Load(Initial, onLoaded: EnterLoadScene);
+            UnityEngine.Debug.Log("BootstrapState");
+            EnterLoadScene();
         }
 
         public void Exit()
@@ -43,9 +44,12 @@ namespace Code.Infrastructure.States
 
         private void RegisterServices()
         {
+            UnityEngine.Debug.Log("RegisterServices");
+            
             var settings = _services.RegisterSingle<ISettingsService>(new SettingsService());
             var assets = _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             var gameFactory = _services.RegisterSingle<IGameFactory>(new GameFactory(assets));
+            var modelBuilder = _services.RegisterSingle<IModelBuilder>(new ModelBuilder(gameFactory));
             var controls = _services.RegisterSingle<IControlService>(new ControlService(settings));
         }
     }

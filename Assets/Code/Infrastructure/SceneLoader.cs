@@ -16,6 +16,7 @@ namespace Code.Infrastructure
         {
             if (SceneManager.GetActiveScene().name == name)
             {
+                UnityEngine.Debug.Log("LoadActiveScene");
                 onLoaded?.Invoke();
                 yield break;
             }
@@ -25,6 +26,7 @@ namespace Code.Infrastructure
             while (waitNextScene.isDone)
                 yield return null;
 
+            UnityEngine.Debug.Log("Load scene " + name + "-" + SceneManager.GetActiveScene().name);
             onLoaded?.Invoke();
         }
     }

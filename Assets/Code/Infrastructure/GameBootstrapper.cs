@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Code.Curtain;
 using Code.Infrastructure.States;
 using Code.Infrastructure.Updater;
-using Code.Logic;
 using UnityEngine;
 
 namespace Code.Infrastructure
