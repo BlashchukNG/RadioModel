@@ -56,20 +56,23 @@ namespace Code.Infrastructure
             if (updatable is ILateTick lateTick) _lateTicks.Add(lateTick);
         }
 
-        public void Tick(float delta)
+        private void Update()
         {
+            var delta = Time.deltaTime;
             var count = _ticks.Count;
             for (var i = 0; i < count; i++) _ticks[i].Tick(delta);
         }
 
-        public void FixedTick(float delta)
+        private void FixedUpdate()
         {
+            var delta = Time.deltaTime;
             var count = _fixedTicks.Count;
             for (var i = 0; i < count; i++) _fixedTicks[i].FixedTick(delta);
         }
 
-        public void LateTick(float delta)
+        private void LateUpdate()
         {
+            var delta = Time.deltaTime;
             var count = _lateTicks.Count;
             for (var i = 0; i < count; i++) _lateTicks[i].LateTick(delta);
         }

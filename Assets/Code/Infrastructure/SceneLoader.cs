@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure
@@ -16,7 +17,6 @@ namespace Code.Infrastructure
         {
             if (SceneManager.GetActiveScene().name == name)
             {
-                UnityEngine.Debug.Log("LoadActiveScene");
                 onLoaded?.Invoke();
                 yield break;
             }
@@ -26,7 +26,8 @@ namespace Code.Infrastructure
             while (waitNextScene.isDone)
                 yield return null;
 
-            UnityEngine.Debug.Log("Load scene " + name + "-" + SceneManager.GetActiveScene().name);
+            yield return new WaitUntil(() => SceneManager.GetActiveScene().name != name);
+
             onLoaded?.Invoke();
         }
     }

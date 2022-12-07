@@ -29,7 +29,6 @@ namespace Code.Infrastructure.States
 
         public void Enter()
         {
-            UnityEngine.Debug.Log("BootstrapState");
             EnterLoadScene();
         }
 
@@ -44,8 +43,6 @@ namespace Code.Infrastructure.States
 
         private void RegisterServices()
         {
-            UnityEngine.Debug.Log("RegisterServices");
-            
             var settings = _services.RegisterSingle<ISettingsService>(new SettingsService());
             var assets = _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             var gameFactory = _services.RegisterSingle<IGameFactory>(new GameFactory(assets));

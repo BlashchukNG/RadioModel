@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6d32053c54339b8a5d48a308f9601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 7500019303305071689}
+  _body: {fileID: 7500019303305071689}
+  _power: 5
+  _rotationSpeed: 90
 --- !u!1001 &7500019303811930559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,7 +185,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746084372696314318}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 386d3a8e27b852e4392dbd2b294b6635, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -259,7 +261,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6730523670104251692}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 386d3a8e27b852e4392dbd2b294b6635, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

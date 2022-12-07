@@ -29,14 +29,12 @@ namespace Code.Infrastructure.Builders
         public IModelBuilder WithMoveModule()
         {
             _construct.AddMoveModule(new ModelMove());
-
             return this;
         }
 
         public IModelBuilder WithRotateModule()
         {
             _construct.AddRotateModule(new ModelRotate());
-
             return this;
         }
 

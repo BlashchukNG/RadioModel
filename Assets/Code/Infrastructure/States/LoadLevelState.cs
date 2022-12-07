@@ -3,6 +3,8 @@ using Code.Enums;
 using Code.Infrastructure.Builders;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Updater;
+using Code.Views.Controls.Panels;
+using UnityEngine;
 
 namespace Code.Infrastructure.States
 {
@@ -30,8 +32,6 @@ namespace Code.Infrastructure.States
 
         public void Enter(string sceneName)
         {
-            UnityEngine.Debug.Log("LoadLevelState");
-            
             _loadingCurtain.Show();
             _gameFactory.CleanUp();
 
@@ -40,7 +40,6 @@ namespace Code.Infrastructure.States
 
         public void Exit()
         {
-            UnityEngine.Debug.Log("Exit");
             _loadingCurtain.Hide();
         }
 
@@ -53,14 +52,16 @@ namespace Code.Infrastructure.States
 
         private void InitGame()
         {
-            UnityEngine.Debug.Log("InitGame");
-            
             var ground = _gameFactory.CreateGround();
 
+            var panel = Object.FindObjectOfType<BulldozerControlPanel>();
             var model = _modelBuilder.Build(ModelType.Bulldozer)
                                      .WithMoveModule()
                                      .WithRotateModule()
-                                     .GetModel();
+                                     .GetModel()
+                                     .Initial(panel);
+            
+            _updater.Add(model);
         }
     }
 }
