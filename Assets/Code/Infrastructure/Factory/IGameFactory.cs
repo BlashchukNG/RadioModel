@@ -1,4 +1,5 @@
 ﻿using Code.Infrastructure.Services;
+using Code.Views.Controls.Panels;
 using UnityEngine;
 
 namespace Code.Infrastructure.Factory
@@ -8,6 +9,7 @@ namespace Code.Infrastructure.Factory
     {
         GameObject CreateViewMain();
         GameObject CreateViewUserData(Transform root);
+        BaseControlPanel CreateBulldozerControlPanel(Transform root);
         void CleanUp();
     }
 }

@@ -8,5 +8,7 @@ namespace Code.Infrastructure.AssetManagement
     {
         GameObject Instantiate(string path);
         GameObject Instantiate(string path, Transform root);
+        T Instantiate<T>(string path, Transform root)
+            where T : MonoBehaviour;
     }
 }

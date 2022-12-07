@@ -1,6 +1,7 @@
 ﻿using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Services;
+using Code.Infrastructure.Services.Control;
 using Code.Infrastructure.Services.Settings;
 
 namespace Code.Infrastructure.States
@@ -41,9 +42,10 @@ namespace Code.Infrastructure.States
 
         private void RegisterServices()
         {
-            _services.RegisterSingle<ISettingsService>(new SettingsService());
-            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
+            var settings = _services.RegisterSingle<ISettingsService>(new SettingsService());
+            var assets = _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            var gameFactory = _services.RegisterSingle<IGameFactory>(new GameFactory(assets));
+            var controls = _services.RegisterSingle<IControlService>(new ControlService(settings));
         }
     }
 }

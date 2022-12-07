@@ -6,6 +6,6 @@ namespace Code.Configs
     public class MainConfig : 
         ScriptableObject
     {
-        public string url;
+        
     }
 }
