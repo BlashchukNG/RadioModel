@@ -9,7 +9,7 @@ namespace Code.Infrastructure.Factory
     {
         GameObject CreateViewMain();
         GameObject CreateViewUserData(Transform root);
-        void CleanUp();
         BaseControlPanel CreateBulldozerControlPanel(Transform root);
+        void CleanUp();
     }
 }
