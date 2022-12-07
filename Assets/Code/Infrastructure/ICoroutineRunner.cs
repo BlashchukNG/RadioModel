@@ -5,7 +5,8 @@ namespace Code.Infrastructure
 {
     public interface ICoroutineRunner
     {
-        Coroutine StartCoroutine(IEnumerator coroutine);
-        void StopAllCoroutine();
+        Coroutine StartEnumerator(IEnumerator coroutine);
+        void StopEnumerator(IEnumerator coroutine);
+        void StopAllEnumerators();
     }
 }

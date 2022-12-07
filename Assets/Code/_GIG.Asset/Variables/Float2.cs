@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GIG.Asset.Variables
+namespace Code._GIG.Asset.Variables
 {
     [Serializable]
     public struct Float2

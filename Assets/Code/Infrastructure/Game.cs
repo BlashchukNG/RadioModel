@@ -1,5 +1,6 @@
 ﻿using Code.Infrastructure.Services;
 using Code.Infrastructure.States;
+using Code.Infrastructure.Updater;
 using Code.Logic;
 
 namespace Code.Infrastructure
@@ -8,9 +9,9 @@ namespace Code.Infrastructure
     {
         public readonly GameStateMachine stateMachine;
 
-        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
+        public Game(ICoroutineRunner coroutineRunner, IUpdater updater, LoadingCurtain loadingCurtain)
         {
-            stateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain, ServiceLocator.Container, coroutineRunner);
+            stateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), updater, loadingCurtain, ServiceLocator.Container, coroutineRunner);
         }
     }
 }

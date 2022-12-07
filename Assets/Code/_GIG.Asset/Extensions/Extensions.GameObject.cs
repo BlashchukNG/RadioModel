@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GIG.Asset.Extensions
+namespace Code._GIG.Asset.Extensions
 {
     public static partial class Extensions
     {

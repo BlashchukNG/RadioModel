@@ -1,4 +1,5 @@
 ﻿using Code.Infrastructure.Factory;
+using Code.Infrastructure.Updater;
 using Code.Logic;
 using UnityEngine;
 
@@ -10,13 +11,15 @@ namespace Code.Infrastructure.States
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
-
+        
+        private readonly IUpdater _updater;
         private readonly IGameFactory _gameFactory;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IUpdater updater, LoadingCurtain loadingCurtain, IGameFactory gameFactory)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _updater = updater;
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
         }
