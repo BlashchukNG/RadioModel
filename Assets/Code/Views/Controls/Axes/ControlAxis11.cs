@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 namespace Code.Views.Controls.Axes
 {
-    public class ControlAxis11 : 
+    public class ControlAxis11 :
         MonoBehaviour,
         IControlAxis
     {
         public event Action<float> onAxisValueChanged;
-        
+
         [SerializeField] private Slider _slider;
 
         private void Awake()
@@ -20,8 +20,7 @@ namespace Code.Views.Controls.Axes
         private void AxisValueChanged(float value)
         {
             var result = Mathf.Lerp(-1f, 1f, value);
-            
-            print(result);
+            onAxisValueChanged?.Invoke(result);
         }
     }
 }

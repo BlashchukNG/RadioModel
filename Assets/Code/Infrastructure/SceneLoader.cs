@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure
@@ -10,7 +11,7 @@ namespace Code.Infrastructure
 
         public SceneLoader(ICoroutineRunner coroutineRunner) => _coroutineRunner = coroutineRunner;
 
-        public void Load(string name, Action onLoaded = null) => _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
+        public void Load(string name, Action onLoaded = null) => _coroutineRunner.StartEnumerator(LoadScene(name, onLoaded));
 
         private IEnumerator LoadScene(string name, Action onLoaded = null)
         {
@@ -24,6 +25,8 @@ namespace Code.Infrastructure
 
             while (waitNextScene.isDone)
                 yield return null;
+
+            yield return new WaitUntil(() => SceneManager.GetActiveScene().name != name);
 
             onLoaded?.Invoke();
         }

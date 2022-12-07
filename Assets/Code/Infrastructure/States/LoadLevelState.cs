@@ -1,5 +1,9 @@
-﻿using Code.Infrastructure.Factory;
-using Code.Logic;
+﻿using Code.Curtain;
+using Code.Enums;
+using Code.Infrastructure.Builders;
+using Code.Infrastructure.Factory;
+using Code.Infrastructure.Updater;
+using Code.Views.Controls.Panels;
 using UnityEngine;
 
 namespace Code.Infrastructure.States
@@ -11,14 +15,19 @@ namespace Code.Infrastructure.States
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
 
+        private readonly IUpdater _updater;
         private readonly IGameFactory _gameFactory;
+        private readonly IModelBuilder _modelBuilder;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IUpdater updater, LoadingCurtain loadingCurtain, IGameFactory gameFactory,
+            IModelBuilder modelBuilder)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _updater = updater;
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
+            _modelBuilder = modelBuilder;
         }
 
         public void Enter(string sceneName)
@@ -36,8 +45,6 @@ namespace Code.Infrastructure.States
 
         private void OnLoaded()
         {
-            Debug.Log("Scene Loaded");
-
             InitGame();
 
             _gameStateMachine.Enter<GameLoopState>();
@@ -45,8 +52,16 @@ namespace Code.Infrastructure.States
 
         private void InitGame()
         {
-            // var main = _gameFactory.CreateViewMain().GetComponent<MainView>();
-            // main.Initialize(_data.userData);
+            var ground = _gameFactory.CreateGround();
+
+            var panel = Object.FindObjectOfType<BulldozerControlPanel>();
+            var model = _modelBuilder.Build(ModelType.Bulldozer)
+                                     .WithMoveModule()
+                                     .WithRotateModule()
+                                     .GetModel()
+                                     .Initial(panel);
+            
+            _updater.Add(model);
         }
     }
 }

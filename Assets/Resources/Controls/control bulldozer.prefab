@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befcf391ff0943e8a2d07fa134bb12d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 0
   _axisPower: {fileID: 6781803396464289229}
   _axisAcceleration: {fileID: 2753925012499818403}
   _axisDirection: {fileID: 7542192149362767851}

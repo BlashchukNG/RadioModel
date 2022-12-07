@@ -17,9 +17,6 @@ namespace Code.Views.Controls.Axes
             _slider.onValueChanged.AddListener(AxisValueChanged);
         }
 
-        private void AxisValueChanged(float value)
-        {
-            print(value);
-        }
+        private void AxisValueChanged(float value) => onAxisValueChanged?.Invoke(value);
     }
 }
