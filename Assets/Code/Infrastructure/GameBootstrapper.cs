@@ -23,7 +23,7 @@ namespace Code.Infrastructure
 
         private void Awake()
         {
-            _game = new Game(coroutineRunner: this, this, Instantiate(_curtain));
+            _game = new Game(coroutineRunner: this, updater: this, Instantiate(_curtain));
             _game.stateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);

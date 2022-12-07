@@ -1,4 +1,4 @@
-﻿namespace Code.Infrastructure.AssetManagement
+﻿namespace Code.Constants
 {
     public static class AssetsPath
     {

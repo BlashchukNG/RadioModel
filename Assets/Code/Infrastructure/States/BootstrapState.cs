@@ -1,4 +1,5 @@
-﻿using Code.Infrastructure.AssetManagement;
+﻿using Code.Constants;
+using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Factory;
 using Code.Infrastructure.Services;
 using Code.Infrastructure.Services.Control;
@@ -37,7 +38,7 @@ namespace Code.Infrastructure.States
 
         private void EnterLoadScene()
         {
-            _gameStateMachine.Enter<LoadLevelState, string>("Game");
+            _gameStateMachine.Enter<LoadLevelState, string>(SceneNames.GAME);
         }
 
         private void RegisterServices()

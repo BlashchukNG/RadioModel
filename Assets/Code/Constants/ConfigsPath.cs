@@ -1,4 +1,4 @@
-﻿namespace Code.Infrastructure.Services.Settings
+﻿namespace Code.Constants
 {
     public static class ConfigsPath
     {

@@ -39,8 +39,6 @@ namespace Code.Infrastructure.States
 
         private void OnLoaded()
         {
-            Debug.Log("Scene Loaded");
-
             InitGame();
 
             _gameStateMachine.Enter<GameLoopState>();
