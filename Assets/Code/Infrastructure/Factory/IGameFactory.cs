@@ -1,6 +1,7 @@
 ﻿using Code.Infrastructure.Services;
 using Code.Logic.Environment;
 using Code.Logic.Models;
+using Code.Logic.UserCamera;
 using Code.Views.Controls.Panels;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ namespace Code.Infrastructure.Factory
     {
         GameObject CreateViewMain();
         GameObject CreateViewUserData(Transform root);
-        
+
+        CameraFollow CreateCamera();
         
         Ground CreateGround();
         
