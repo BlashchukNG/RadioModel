@@ -8,6 +8,7 @@ namespace Code.Logic.Models
         IModel
     {
         [SerializeField] private Rigidbody _body;
+        [SerializeField] private Rigidbody _motor;
 
         [SerializeField] private float _power;
         [SerializeField] private float _rotationSpeed;
@@ -27,6 +28,8 @@ namespace Code.Logic.Models
             panel.Direction.onAxisValueChanged += DirectionValueChanged;
 
             _panel = panel;
+
+            _motor.transform.parent = null;
 
             return this;
         }
@@ -49,15 +52,17 @@ namespace Code.Logic.Models
 
         public void AddMoveModule(IModelMove move)
         {
-            move.Initial(_body);
+            move.Initial(transform, _motor);
             _move = move;
         }
 
         public void AddRotateModule(IModelRotate rotate)
         {
-            rotate.Initial(_body);
+            rotate.Initial(transform);
             _rotate = rotate;
         }
+
+        public Transform GetCameraTarget() => _motor.transform;
 
         public void FixedTick(float delta)
         {
@@ -66,6 +71,7 @@ namespace Code.Logic.Models
 
         public void Tick(float delta)
         {
+            transform.position = _motor.transform.position;
             _rotate.Rotate(_rotationSpeed * _currentRotation * delta);
         }
     }

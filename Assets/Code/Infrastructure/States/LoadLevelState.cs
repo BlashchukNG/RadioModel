@@ -60,8 +60,12 @@ namespace Code.Infrastructure.States
                                      .WithRotateModule()
                                      .GetModel()
                                      .Initial(panel);
+
+            var camera = _gameFactory.CreateCamera()
+                                     .Initialize(model.GetCameraTarget());
             
             _updater.Add(model);
+            _updater.Add(camera);
         }
     }
 }

@@ -5,16 +5,19 @@ namespace Code.Logic.Models
     public sealed class ModelMove :
         IModelMove
     {
-        private Rigidbody _body;
+        private Transform _modelTransform;
+        private Rigidbody _motor;
 
-        public void Initial(Rigidbody body)
+        public void Initial(Transform modelTransform, Rigidbody motor)
         {
-            _body = body;
+            _modelTransform = modelTransform;
+            _motor = motor;
         }
 
         public void Move(float power)
         {
-            _body.velocity = _body.transform.forward * power;
+            //_motor.velocity = _modelTransform.transform.forward * power;
+            _motor.AddForce(_modelTransform.transform.forward * power, ForceMode.Force);
         }
     }
 }
