@@ -3,7 +3,7 @@
     public static class AssetsPath
     {
         //CAMERA
-        public const string CAMERA = "Camera/ccamera pivot";
+        public const string CAMERA = "Camera/camera pivot";
         
         //CONTROLS
         public const string CONTROL_BULLDOZER = "Controls/control bulldozer";

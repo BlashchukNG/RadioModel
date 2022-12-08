@@ -55,11 +55,11 @@ Rigidbody:
   m_GameObject: {fileID: 2094585048}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 4
-  m_AngularDrag: 0.05
+  m_Drag: 3
+  m_AngularDrag: 4
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &7500019303305071691
@@ -111,8 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 1898619456}
   _motor: {fileID: 2094585053}
-  _power: 15
-  _rotationSpeed: 90
+  _power: 30
+  _rotationSpeed: 60
 --- !u!54 &1898619456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 3
 --- !u!1001 &7500019303811930559

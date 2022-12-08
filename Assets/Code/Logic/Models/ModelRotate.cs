@@ -6,18 +6,11 @@ namespace Code.Logic.Models
         IModelRotate
     {
         private Transform _modelTransform;
-        private Rigidbody _body;
-        private Rigidbody _motor;
 
-        public void Initial(Rigidbody body, Rigidbody motor)
-        {
-            _motor = motor;
-            _body = body;
-        }
+        public void Initial(Transform modelTransform) => _modelTransform = modelTransform;
 
-        public void Rotate(float rotation)
-        {
-            _body.transform.Rotate(_body.transform.up, rotation);
-        }
+        public void Rotate(float rotation) =>
+            _modelTransform.rotation = Quaternion.Euler(_modelTransform.rotation.eulerAngles +
+                                                        new Vector3(0f, rotation, 0f));
     }
 }

@@ -58,7 +58,7 @@ namespace Code.Logic.Models
 
         public void AddRotateModule(IModelRotate rotate)
         {
-            rotate.Initial(_body, _motor);
+            rotate.Initial(transform);
             _rotate = rotate;
         }
 
@@ -71,7 +71,7 @@ namespace Code.Logic.Models
 
         public void Tick(float delta)
         {
-            _body.position = _motor.transform.position;
+            transform.position = _motor.transform.position;
             _rotate.Rotate(_rotationSpeed * _currentRotation * delta);
         }
     }
